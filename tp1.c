@@ -115,7 +115,8 @@ void teclado(unsigned char key, int x, int y){
         PULO = 1;
         break;
       case 'p':
-        pause();
+        if(pause_ativo == 0) pause_ativo = 1;
+        else pause_ativo = 0;
         break;
       case'r':
         reset();
@@ -129,7 +130,8 @@ void teclado(unsigned char key, int x, int y){
 int main(int argc, char **argv){
 
     glutInit(&argc, argv);
-    
+
+    glEnable(GL_TEXTURE_2D);
     glutInitContextVersion(1, 1);
     glutInitContextProfile(GLUT_COMPATIBILITY_PROFILE);
 

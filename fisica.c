@@ -18,20 +18,22 @@ void jump(){
 }
 
 void aumentoVelocidade(){
-  if(VELOCIDADE_OBSTACULOS < VEL_MAX){
-    if(DIFICULDADE == 1){
-      if(jogador.pontuacao % 50 == 0 && jogador.pontuacao > 0){//A cada multiplo de 50, ou seja a cada 50 pontos, a dificuldade aumenta um pouco.
-        VELOCIDADE_OBSTACULOS += 0.2;
+  if(pause_ativo != 0){
+    if(VELOCIDADE_OBSTACULOS < VEL_MAX){
+      if(DIFICULDADE == 1){
+        if(jogador.pontuacao % 50 == 0 && jogador.pontuacao > 0){//A cada multiplo de 50, ou seja a cada 50 pontos, a dificuldade aumenta um pouco.
+          VELOCIDADE_OBSTACULOS += 0.2;
+        }
       }
-    }
-    if(DIFICULDADE == 2){
-      if(jogador.pontuacao % 50 == 0 && jogador.pontuacao > 0){
-        VELOCIDADE_OBSTACULOS += 0.3;
+      if(DIFICULDADE == 2){
+        if(jogador.pontuacao % 50 == 0 && jogador.pontuacao > 0){
+          VELOCIDADE_OBSTACULOS += 0.3;
+        }
       }
-    }
-    if(DIFICULDADE == 3){
-      if(jogador.pontuacao % 50 == 0 && jogador.pontuacao > 0){
-        VELOCIDADE_OBSTACULOS += 0.4;
+      if(DIFICULDADE == 3){
+        if(jogador.pontuacao % 50 == 0 && jogador.pontuacao > 0){
+          VELOCIDADE_OBSTACULOS += 0.4;
+        }
       }
     }
   }
@@ -41,15 +43,18 @@ void obstacleMotion(){
   int i;
   for(i = 0; i < contObstaculo; i++){
     if(obstaculos[contObstaculo-1].posicao.posX > -30){//Para de mover em certo ponto para não estourar o int
-        obstaculos[i].posicao.posX -= VELOCIDADE_OBSTACULOS;
+      obstaculos[i].posicao.posX -= VELOCIDADE_OBSTACULOS;
     }
   }
+
 }
 
 void verificaColisao(){
-  int colisao = 0;
+  if(pause_ativo!= 0){
+    int colisao = 0;
 
-  if(colisao != 0){
-    gameOver();
+    if(colisao != 0){
+      gameOver();
+    }
   }
 }
