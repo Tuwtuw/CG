@@ -1,5 +1,9 @@
 #include "tp1.h"
 
+int Fimdejogo = 0;
+
+
+
 typedef struct placar{
 	char* nome;
 	int pontuacao;
@@ -69,15 +73,31 @@ void gravaHighScore(char* nome, int pontuacao){
 	fclose(highscore);
 }
 
+void quadrado_central(){
+	glColor3f(1,0.3,0.9);
+
+	glBegin(GL_POLYGON);//Desenha o chão.
+			glVertex2f(20,50);
+			glVertex2f(50,50);
+			glVertex2f(20,90);
+			glVertex2f(50,90);
+		glEnd();
+
+		glutSwapBuffers();
+
+}
 
 
 void gameOver(){
-
-  gravaHighScore("", 0);
+	quadrado_central();
+	Fimdejogo = 0;
+	gravaHighScore("", 0);
 }
 
 
 void telaPausa(){
+
+	quadrado_central();
 
 }
 
