@@ -45,7 +45,7 @@ void jump();
 void pontuacao();
 void item();
 void obstaculo();
-void verificaColisao();
+void verificaColisao(Objeto obstaculo);
 void obstacleMotion();
 void aumentoVelocidade();
 void gameOver();

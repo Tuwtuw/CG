@@ -69,15 +69,16 @@ void reset(){
 
 
 void atualiza(int parametro){
-	//verificaColisao(); ARRUMAR ESSE CARAI
+  int i;
   jump();
 	obstacleMotion();
+  for(i = 0; i < contObstaculo; i++){
+    verificaColisao(obstaculos[i]);
+  }
   aumentoVelocidade();
 	glutPostRedisplay ();
 	glutTimerFunc(7, atualiza, 0);//Atualiza a aproximadamente 144fps
 }
-
-//glutTimerFunc(25, atualizaCena, 0);, 25 é milisegundo, atualiza é a função sendo chamada e 0 é o parâmetr passado
 
 void inicializa(void){
   glClearColor(0.196078, 0.6, 0.8, 0);
@@ -129,7 +130,7 @@ void teclado(unsigned char key, int x, int y){
 int main(int argc, char **argv){
 
     glutInit(&argc, argv);
-    
+
     glutInitContextVersion(1, 1);
     glutInitContextProfile(GLUT_COMPATIBILITY_PROFILE);
 

@@ -46,10 +46,14 @@ void obstacleMotion(){
   }
 }
 
-void verificaColisao(){
+void verificaColisao(Objeto obstaculo){
   int colisao = 0;
+  if(jogador.posicao.posX - jogador.largura/2 < obstaculo.posicao.posX + obstaculo.largura/2 && jogador.posicao.posX + jogador.largura/2 > obstaculo.posicao.posX - obstaculo.largura/2
+      && jogador.posicao.posY - jogador.altura/2 < obstaculo.posicao.posY + obstaculo.altura/2 && jogador.posicao.posY + jogador.altura/2 > obstaculo.posicao.posY - obstaculo.altura/2){
+    colisao = 1;
+  }
 
   if(colisao != 0){
-    gameOver();
+    //gameOver();
   }
 }
