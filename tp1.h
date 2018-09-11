@@ -58,6 +58,9 @@ extern Objeto *obstaculos;
 extern Objeto *powerup;
 extern int contObstaculo;
 extern int contPowerup;
+//itens
+extern int pause_ativo;
+
 //Fisica
 extern int ESTADO;
 extern int PULO;

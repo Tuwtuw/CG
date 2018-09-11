@@ -1,11 +1,15 @@
 #include "tp1.h"
 
+//VARIAVEIS GLOBAIS
 int contObstaculo = 0, contPowerup = 0;
+int pause_ativo = 1;
 Objeto *obstaculos;
 Objeto *powerup;
 
+
+//FUNCOES
 void obstaculo(){
-  int chance = (rand()%125) + 1;//Gera um número de 1 a 125, pra checar qual tipo de obstáculo vai gerar.
+  int chance = (rand()%125) + 1;//Gera um número de 1 a 100, pra checar qual tipo de obstáculo vai gerar.
   if(DIFICULDADE == 1){//Dependendo da dificuldade, inimigos voadores vem mais cedo e itens de suporte são mais raros.
     if(jogador.pontuacao > 1000){//Valor arbitrário para começar a aparecer obstáculos voadores.
       if(chance >= 110){
@@ -108,6 +112,8 @@ void geraObstaculo(float largura, float altura, int voador){//O parametro voador
 }
 
 void pontuacao(){
-  jogador.pontuacao++;
-  glutTimerFunc(100, pontuacao, 0);
+  if(pause_ativo != 0){
+    jogador.pontuacao++;
+    glutTimerFunc(100, pontuacao, 0);
+  }
 }
